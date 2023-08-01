@@ -1,13 +1,12 @@
+import { ThemeProvider } from "styled-components";
+import theme from "./theme";
 import GlobalStyle from "./globalStyles";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <main style={{ background: "#000", height: "100vh", width: "100%" }}>
-        <div>clen</div>
-      </main>
-    </>
+    </ThemeProvider>
   );
 }
 
