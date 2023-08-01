@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 interface IDivProps {
-  background: string;
-  color: string;
   h: string;
   w: string;
   textAlign: string;
@@ -21,8 +19,6 @@ interface IDivProps {
 type TDivProps = Partial<IDivProps>;
 
 export const Div = styled.div<TDivProps>`
-  background: ${(props) => props.background ?? null};
-  color: ${(props) => props.color ?? null};
   height: ${(props) => props.h ?? null};
   width: ${(props) => props.w ?? null};
   text-align: ${(props) => props.textAlign ?? null};
