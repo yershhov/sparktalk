@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Div } from "../common/Div";
 
-export const Flex = styled.div`
+export const Flex = styled(Div)`
   display: flex;
 `;
 
@@ -18,4 +19,13 @@ export const FlexCenter = styled(FlexAlignCenter)`
 
 export const FlexSpaceBetween = styled(FlexAlignCenter)`
   justify-content: space-between;
+`;
+
+export const FullSizeFlexCenter = styled(FlexCenter)`
+  height: 100%;
+  width: 1005;
+`;
+
+export const FlexDirectionColumn = styled(FlexJustifyCenter)`
+  flex-direction: column;
 `;
