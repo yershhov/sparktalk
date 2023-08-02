@@ -12,6 +12,12 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
+// Configuration needed for sign in with link
+export const actionCodeSettings = {
+  url: "http://localhost:4000/",
+  handleCodeInApp: true,
+};
+
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 export const firestore = getFirestore(firebaseApp);
