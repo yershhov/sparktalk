@@ -1,5 +1,5 @@
-import { useNavigate, Link } from "react-router-dom";
-import { CustomLink as LinkStyled } from "../../styles/form/CustomLink";
+import { Link } from "react-router-dom";
+import { CustomLink } from "../../styles/form/CustomLink";
 import { Button } from "../../styles/form/Button";
 import { Input } from "../../styles/form/Input";
 import {
@@ -27,7 +27,7 @@ export default function Login() {
             <Button>Login</Button>
             <Div textAlign="center">
               <Link to={"/signup"}>
-                <LinkStyled w="100%">Don't have an account yet?</LinkStyled>
+                <CustomLink w="100%">Don't have an account yet?</CustomLink>
               </Link>
             </Div>
           </FlexDirectionColumn>

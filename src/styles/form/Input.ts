@@ -1,8 +1,10 @@
 import { styled } from "styled-components";
 
-export const Input = styled.input`
+export const Input = styled.input<{ invalid?: boolean }>`
   background-color: ${(props) => props.theme.colors.secondary};
-  border: 2px solid ${(props) => props.theme.colors.secondary};
+  border: 2px solid
+    ${(props) =>
+      props.invalid ? props.theme.colors.error : props.theme.colors.secondary};
   border-radius: 8px;
   caret-color: ${(props) => props.theme.colors.primary};
   outline: none;
