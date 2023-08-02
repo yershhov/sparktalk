@@ -91,7 +91,7 @@ export default function SignUp() {
               )}
 
               <FlexDirectionColumn style={{ gap: 10 }} pt="0.7rem">
-                <Button type="submit">Sign Up</Button>
+                <Button type="submit">Create account</Button>
                 <Div textAlign="center">
                   <Link to={"/login"}>
                     <CustomLink w="100%">Already have an account?</CustomLink>
