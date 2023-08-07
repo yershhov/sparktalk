@@ -2,6 +2,7 @@ import SparktalkRouter from "./routes/routes";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./globalStyles";
 import theme from "./theme";
+import AuthLayout from "./components/AuthLayout";
 
 const AppContainer = styled.main`
   background: ${(props) => props.theme.colors.main};
@@ -14,7 +15,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
-        <SparktalkRouter />
+        <AuthLayout>
+          <SparktalkRouter />
+        </AuthLayout>
       </AppContainer>
     </ThemeProvider>
   );
