@@ -22,7 +22,7 @@ export const FlexSpaceBetween = styled(FlexAlignCenter)`
 
 export const FullSizeFlexCenter = styled(FlexCenter)`
   height: 100%;
-  width: 1005;
+  width: 100%;
 `;
 
 export const FlexDirectionColumn = styled(FlexJustifyCenter)`

@@ -5,7 +5,7 @@ import theme from "./theme";
 import AuthLayout from "./components/AuthLayout";
 
 const AppContainer = styled.main`
-  background: ${(props) => props.theme.colors.main};
+  background: ${(props) => props.theme.colors.black};
   height: 100vh;
   width: 100%;
 `;
