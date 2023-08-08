@@ -29,7 +29,7 @@ export default function SignIn() {
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <HeadingContainer>
         <Icons>⚛️🔥</Icons>
-        <Heading>Welcome to SparkTalk!</Heading>
+        <Heading>Welcome to Sparktalk!</Heading>
       </HeadingContainer>
       <FullSizeFlexCenter>
         <SignInForm>
