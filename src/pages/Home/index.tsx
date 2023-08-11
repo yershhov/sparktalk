@@ -13,6 +13,7 @@ const AppFrame = styled(FlexDirectionColumn)`
   flex-direction: column;
   height: 100vh;
   max-height: 100%;
+  min-width: 20rem;
 `;
 
 export default function Home() {

@@ -1,37 +1,15 @@
-import { useCallback, useEffect } from "react";
-import { useState, useRef } from "react";
-// import "./Sidebar.css";
-import styled from "styled-components";
-
-const SidebarStyled = styled.div<{ width: number }>`
-  flex-grow: 0;
-  flex-shrink: 0;
-  min-width: 200px;
-  max-width: 70%;
-  display: flex;
-  border-right: ${(props) => props.theme.colors.secondary} 1px solid;
-  flex-direction: row;
-  z-index: 2;
-  width: ${(props) => props.width + "px"};
-`;
-
-const SidebarContent = styled.div`
-  flex: 1;
-`;
-
-const SidebarResizer = styled.div`
-  flex-grow: 0;
-  flex-shrink: 0;
-  justify-self: flex-end;
-  cursor: col-resize;
-  resize: horizontal;
-  width: 1px;
-`;
+import { useCallback, useEffect, useRef, useState } from "react";
+import { LogOutButton } from "../../LogOutButton";
+import { screens } from "../../../styles/screens";
+import { useMediaQuery } from "usehooks-ts";
+import { SidebarStyled, SidebarContent, SidebarResizer } from "./styled";
 
 export default function Sidebar() {
   const sidebarRef = useRef(null);
   const [isResizing, setIsResizing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(300);
+
+  const matches = useMediaQuery(screens.md);
 
   const startResizing = useCallback(() => {
     setIsResizing(true);
@@ -43,14 +21,14 @@ export default function Sidebar() {
 
   const resize = useCallback(
     (mouseMoveEvent: MouseEvent) => {
-      if (isResizing && sidebarRef.current) {
+      if (isResizing) {
         setSidebarWidth(
           mouseMoveEvent.clientX -
             (sidebarRef.current! as HTMLElement).getBoundingClientRect().left
         );
       }
     },
-    [isResizing, sidebarRef.current]
+    [isResizing]
   );
 
   useEffect(() => {
@@ -70,11 +48,10 @@ export default function Sidebar() {
       onMouseDown={(e) => e.preventDefault()}
     >
       <SidebarContent>
-        <div
-          style={{ width: "100%", height: "5rem", background: "gray" }}
-        ></div>
+        <LogOutButton width="100%" />
+        <div style={{ height: "5rem", width: "100%", background: "gray" }} />
       </SidebarContent>
-      <SidebarResizer onMouseDown={startResizing} />
+      {matches && <SidebarResizer onMouseDown={startResizing} />}
     </SidebarStyled>
   );
 }

@@ -9,6 +9,7 @@ import {
   Heading,
   SignInForm,
   TextWithLeftIcon,
+  SignInPageContainer,
 } from "./styled";
 
 export default function SignIn() {
@@ -26,7 +27,7 @@ export default function SignIn() {
   }
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <SignInPageContainer>
       <HeadingContainer>
         <Icons>⚛️🔥</Icons>
         <Heading>Welcome to Sparktalk!</Heading>
@@ -43,6 +44,6 @@ export default function SignIn() {
           {/* </FlexDirectionColumn> */}
         </SignInForm>
       </FullSizeFlexCenter>
-    </div>
+    </SignInPageContainer>
   );
 }

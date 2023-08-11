@@ -35,3 +35,9 @@ export const TextWithLeftIcon = styled(FlexAlignCenter)`
   color: ${(props) => props.theme.colors.black};
   font-weight: 500;
 `;
+
+export const SignInPageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;

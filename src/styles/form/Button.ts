@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
+import { StyledButtonProps } from "../../types/props";
 
-export const Button = styled.button<{ variant?: string }>`
+export const Button = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,9 +17,11 @@ export const Button = styled.button<{ variant?: string }>`
   font-weight: 500;
   padding: 0 1rem;
   height: 2.6rem;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  transition: background-color 0.3s ease;
   ${(props) =>
     props.variant === "white" ? { color: props.theme.colors.black } : null}
+
+  ${(props) => props.width && { width: props.width }}
 
   &:hover {
     background: ${(props) => {
