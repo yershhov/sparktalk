@@ -1,26 +1,18 @@
 import styled from "styled-components";
-import { Flex, FlexDirectionColumn } from "../../styles/layouts/flexLayouts";
-import Sidebar from "../../components/Home/Sidebar";
+import { Flex } from "../../styles/layouts/flexLayouts";
+import Chatsbar from "../../components/Home/Chatsbar";
+import Chat from "../../components/Home/Chat";
 
 const HomePageContainer = styled(Flex)`
   display: flex;
   height: 100vh;
 `;
 
-const AppFrame = styled(FlexDirectionColumn)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-height: 100%;
-  min-width: 20rem;
-`;
-
 export default function Home() {
   return (
     <HomePageContainer>
-      <Sidebar />
-      <AppFrame />
+      <Chatsbar />
+      <Chat />
     </HomePageContainer>
   );
 }

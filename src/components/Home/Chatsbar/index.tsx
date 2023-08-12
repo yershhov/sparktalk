@@ -21,6 +21,8 @@ export default function Sidebar() {
 
   const resize = useCallback(
     (mouseMoveEvent: MouseEvent) => {
+      console.log("resizing");
+
       if (isResizing) {
         setSidebarWidth(
           mouseMoveEvent.clientX -
