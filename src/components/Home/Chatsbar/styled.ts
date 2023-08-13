@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { screens } from "../../../styles/screens";
 
-export const SidebarStyled = styled.div<{ width: number }>`
+export const ChatsbarContainer = styled.div<{ width: number }>`
   width: 100%;
   display: flex;
   background: ${(props) => props.theme.colors.secondary};
@@ -15,11 +15,11 @@ export const SidebarStyled = styled.div<{ width: number }>`
   }
 `;
 
-export const SidebarContent = styled.div`
+export const ChatsbarContent = styled.div`
   flex: 1;
 `;
 
-export const SidebarResizer = styled.div`
+export const ChatsbarResizer = styled.div`
   cursor: ew-resize;
   resize: horizontal;
   width: 10px;

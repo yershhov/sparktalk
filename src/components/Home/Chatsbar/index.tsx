@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { LogOutButton } from "../../LogOutButton";
 import { screens } from "../../../styles/screens";
 import { useMediaQuery } from "usehooks-ts";
-import { SidebarStyled, SidebarContent, SidebarResizer } from "./styled";
+import { ChatsbarContainer, ChatsbarContent, ChatsbarResizer } from "./styled";
 
 export default function Sidebar() {
   const sidebarRef = useRef(null);
@@ -57,19 +57,19 @@ export default function Sidebar() {
       window.removeEventListener("mousemove", resize);
       window.removeEventListener("mouseup", stopResizing);
     };
-  }, [resize, stopResizing]);
+  }, [resize]);
 
   return (
-    <SidebarStyled
+    <ChatsbarContainer
       ref={sidebarRef}
       width={sidebarWidth}
       onMouseDown={(e) => e.preventDefault()}
     >
-      <SidebarContent>
+      <ChatsbarContent>
         <LogOutButton width="100%" />
         <div style={{ height: "5rem", width: "100%", background: "gray" }} />
-      </SidebarContent>
-      {matches && <SidebarResizer ref={resizerRef} />}
-    </SidebarStyled>
+      </ChatsbarContent>
+      {matches && <ChatsbarResizer ref={resizerRef} />}
+    </ChatsbarContainer>
   );
 }

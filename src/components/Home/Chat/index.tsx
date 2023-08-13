@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import { screens } from "../../../styles/screens";
 
 const ChatContainer = styled.div`
   flex: 1;
   color: ${(props) => props.theme.colors.border};
-  display: grid;
-  place-items: center;
   height: 100vh;
   max-height: 100%;
-  min-width: 20rem;
+  display: none;
+
+  @media ${screens.md} {
+    min-width: 20rem;
+    display: grid;
+    place-items: center;
+  }
 `;
 
 export default function Chat() {
