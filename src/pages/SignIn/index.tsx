@@ -11,9 +11,15 @@ import {
   TextWithLeftIcon,
   SignInPageContainer,
 } from "./styled";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase/config";
+import FullSizeLoading from "../../components/states/loading/FullSizeLoading";
+import FullSizeError from "../../components/states/errors/FullSizeError";
 
 export default function SignIn() {
   const signInButtonRef = useFocusOnMount<HTMLButtonElement>();
+
+  const [loading, error] = useAuthState(auth);
 
   async function handleClick() {
     const provider = new GoogleAuthProvider();
@@ -25,6 +31,9 @@ export default function SignIn() {
       console.error(error);
     }
   }
+  if (loading) return <FullSizeLoading />;
+
+  if (error) return <FullSizeError />;
 
   return (
     <SignInPageContainer>

@@ -1,7 +1,7 @@
-import { FullSizeFlexCenter } from "../../styles/layouts/flexLayouts";
+import { FullSizeFlexCenter } from "../../../styles/layouts/flexLayouts";
 import Loading from "./Loading";
 
-export default function CenteredLoading() {
+export default function FullSizeLoading() {
   return (
     <FullSizeFlexCenter>
       <Loading />
