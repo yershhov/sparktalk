@@ -27,20 +27,21 @@ export default function SignIn() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
 
-    try {
-      setLoading(true);
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error(error);
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    await signInWithPopup(auth, provider)
+      .then((res) => console.log(res))
+      .catch((error) => {
+        console.error(error.message);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   if (loading) return <FullSizeLoading />;
 
-  if (error) return <FullSizeError />;
+  if (error) return <FullSizeError message={error.message} />;
 
   return (
     <SignInPageContainer>
