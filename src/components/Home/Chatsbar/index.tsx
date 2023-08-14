@@ -3,8 +3,11 @@ import { LogOutButton } from "../../LogOutButton";
 import { screens } from "../../../styles/screens";
 import { useMediaQuery } from "usehooks-ts";
 import { ChatsbarContainer, ChatsbarContent, ChatsbarResizer } from "./styled";
+import { useNavigate } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Chatsbar() {
+  const navigate = useNavigate();
+
   const sidebarRef = useRef(null);
   const resizerRef = useRef(null);
 
@@ -72,7 +75,10 @@ export default function Sidebar() {
     >
       <ChatsbarContent>
         <LogOutButton width="100%" />
-        <div style={{ height: "5rem", width: "100%", background: "gray" }} />
+        <div
+          style={{ height: "5rem", width: "100%", background: "gray" }}
+          onClick={() => navigate("/ada")}
+        />
       </ChatsbarContent>
       {matches && <ChatsbarResizer ref={resizerRef} />}
     </ChatsbarContainer>

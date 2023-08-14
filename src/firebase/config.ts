@@ -20,5 +20,5 @@ export const actionCodeSettings = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-export const firestore = getFirestore(firebaseApp);
+export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);

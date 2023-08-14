@@ -1,20 +1,25 @@
 import { memo } from "react";
-import { getAuth, signOut } from "firebase/auth";
 import { Button } from "../styles/form/Button";
 import { StyledButtonProps } from "../types/props";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/config";
+import { authSetUser } from "../redux/auth/authSlice";
+import { useAppDispatch } from "../store";
 
 function LogOut(props: StyledButtonProps) {
   const { variant, width } = props;
 
-  const logout = async () => {
-    const auth = getAuth();
+  const navigate = useNavigate();
 
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const dispatch = useAppDispatch();
+
+  async function logout() {
+    await signOut(auth);
+    dispatch(authSetUser(null));
+    navigate("/");
+    localStorage.removeItem("token");
+  }
 
   return (
     <Button onClick={logout} width={width} variant={variant}>

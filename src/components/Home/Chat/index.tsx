@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { screens } from "../../../styles/screens";
+import { useParams } from "react-router-dom";
 
 const ChatContainer = styled.div`
   flex: 1;
@@ -16,5 +17,6 @@ const ChatContainer = styled.div`
 `;
 
 export default function Chat() {
-  return <ChatContainer>This is a mock chat container</ChatContainer>;
+  const params = useParams();
+  return <ChatContainer>{params.chatId ?? "Mock"}</ChatContainer>;
 }

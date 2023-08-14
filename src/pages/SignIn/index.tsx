@@ -1,7 +1,10 @@
 import { Button } from "../../styles/form/Button";
 import { FullSizeFlexCenter } from "../../styles/layouts/flexLayouts";
-import useFocusOnMount from "../../hooks/useFocusOnMount";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  UserCredential,
+  signInWithPopup,
+} from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import {
   HeadingContainer,
@@ -11,32 +14,44 @@ import {
   TextWithLeftIcon,
   SignInPageContainer,
 } from "./styled";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
 import FullSizeError from "../../components/states/errors/FullSizeError";
 import FullSizeLoading from "../../components/states/loading/FullSizeLoading";
 import { useState } from "react";
+import { useAppDispatch } from "../../store";
+import { authSetUser } from "../../redux/auth/authSlice";
+import { User } from "../../api/models/user";
+import usersService from "../../api/services/usersService";
 
 export default function SignIn() {
-  const signInButtonRef = useFocusOnMount<HTMLButtonElement>();
+  const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
-  async function handleClick() {
+  function handleSignInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-
     setLoading(true);
-    await signInWithPopup(auth, provider)
-      .then((res) => console.log(res))
+
+    signInWithPopup(auth, provider)
+      .then(async (res: UserCredential) => {
+        const user = res.user;
+
+        const existingUser = await usersService.getById(user.uid);
+
+        // add the user if not
+        if (!existingUser) {
+          await usersService.create(user as User);
+        }
+
+        // TODO: handle errors possible above
+        dispatch(authSetUser(user));
+      })
       .catch((error) => {
-        console.error(error.message);
+        console.error(error);
         setError(error);
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }
 
   if (loading) return <FullSizeLoading />;
@@ -49,16 +64,15 @@ export default function SignIn() {
         <Icons>⚛️🔥</Icons>
         <Heading>Welcome to Sparktalk!</Heading>
       </HeadingContainer>
+
       <FullSizeFlexCenter>
         <SignInForm>
-          {/* <FlexDirectionColumn style={{ gap: 10 }}> */}
-          <Button ref={signInButtonRef} onClick={handleClick} variant="white">
+          <Button onClick={handleSignInWithGoogle} variant="white">
             <TextWithLeftIcon style={{ gap: 6 }}>
               <FcGoogle size={"20px"} />
               Sign in with google
             </TextWithLeftIcon>
           </Button>
-          {/* </FlexDirectionColumn> */}
         </SignInForm>
       </FullSizeFlexCenter>
     </SignInPageContainer>

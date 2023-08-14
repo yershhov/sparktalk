@@ -1,8 +1,9 @@
 import SparktalkRouter from "./routes/routes";
 import styled, { ThemeProvider } from "styled-components";
-import GlobalStyle from "./globalStyles";
+import GlobalStyle from "./styles/globalStyle";
 import theme from "./theme";
-import AuthLayout from "./components/AuthLayout";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const AppContainer = styled.main`
   background: ${(props) => props.theme.colors.black};
@@ -13,12 +14,12 @@ const AppContainer = styled.main`
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AppContainer>
-        <AuthLayout>
+      <Provider store={store}>
+        <GlobalStyle />
+        <AppContainer>
           <SparktalkRouter />
-        </AuthLayout>
-      </AppContainer>
+        </AppContainer>
+      </Provider>
     </ThemeProvider>
   );
 }
