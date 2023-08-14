@@ -29,23 +29,28 @@ export default function Sidebar() {
     [mouseDownWithinResizer]
   );
 
-  const mouseDown = useCallback((mouseDown: MouseEvent) => {
-    const { left, top, width, height } = (
-      resizerRef.current! as HTMLDivElement
-    ).getBoundingClientRect();
+  const mouseDown = useCallback(
+    (mouseDown: MouseEvent) => {
+      if (resizerRef.current!) {
+        const { left, top, width, height } = (
+          resizerRef.current! as HTMLDivElement
+        ).getBoundingClientRect();
 
-    const { clientX, clientY } = mouseDown;
+        const { clientX, clientY } = mouseDown;
 
-    const isInside =
-      clientX >= left &&
-      clientX <= left + width &&
-      clientY >= top &&
-      clientY <= top + height;
+        const isInside =
+          clientX >= left &&
+          clientX <= left + width &&
+          clientY >= top &&
+          clientY <= top + height;
 
-    if (isInside) {
-      setMouseDownWithinResizer(true);
-    }
-  }, []);
+        if (isInside) {
+          setMouseDownWithinResizer(true);
+        }
+      }
+    },
+    [resizerRef.current!]
+  );
 
   useEffect(() => {
     window.addEventListener("mousedown", mouseDown);

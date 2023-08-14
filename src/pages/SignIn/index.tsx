@@ -13,24 +13,31 @@ import {
 } from "./styled";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
-import FullSizeLoading from "../../components/states/loading/FullSizeLoading";
 import FullSizeError from "../../components/states/errors/FullSizeError";
+import FullSizeLoading from "../../components/states/loading/FullSizeLoading";
+import { useState } from "react";
 
 export default function SignIn() {
   const signInButtonRef = useFocusOnMount<HTMLButtonElement>();
 
-  const [loading, error] = useAuthState(auth);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<any>(null);
 
   async function handleClick() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
 
     try {
+      setLoading(true);
       await signInWithPopup(auth, provider);
     } catch (error) {
       console.error(error);
+      setError(error);
+    } finally {
+      setLoading(false);
     }
   }
+
   if (loading) return <FullSizeLoading />;
 
   if (error) return <FullSizeError />;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const Flex = styled.div`
+export const Flex = styled.div<{ full?: boolean }>`
   display: flex;
+  ${(props) => props.full && { width: "100%" }}
 `;
 
 export const FlexAlignCenter = styled(Flex)`
