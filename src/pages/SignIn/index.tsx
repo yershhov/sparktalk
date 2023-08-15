@@ -18,20 +18,19 @@ import { auth } from "../../firebase/config";
 import FullSizeError from "../../components/states/errors/FullSizeError";
 import FullSizeLoading from "../../components/states/loading/FullSizeLoading";
 import { useState } from "react";
-import { useAppDispatch } from "../../store";
-import { authSetUser } from "../../redux/auth/authSlice";
 import { User } from "../../api/models/user";
 import usersService from "../../api/services/usersService";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignIn() {
-  const dispatch = useAppDispatch();
+  const [_, loading] = useAuthState(auth);
 
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<any>(null);
 
   function handleSignInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    setLoading(true);
+    setSubmitting(true);
 
     signInWithPopup(auth, provider)
       .then(async (res: UserCredential) => {
@@ -45,16 +44,15 @@ export default function SignIn() {
         }
 
         // TODO: handle errors possible above
-        dispatch(authSetUser(user));
       })
       .catch((error) => {
         console.error(error);
         setError(error);
       })
-      .finally(() => setLoading(false));
+      .finally(() => setSubmitting(false));
   }
 
-  if (loading) return <FullSizeLoading />;
+  if (loading || submitting) return <FullSizeLoading />;
 
   if (error) return <FullSizeError message={error.message} />;
 
