@@ -7,6 +7,7 @@ import store from "./store";
 
 const AppContainer = styled.main`
   background: ${(props) => props.theme.colors.black};
+  color: white;
   height: 100vh;
   width: 100%;
 `;

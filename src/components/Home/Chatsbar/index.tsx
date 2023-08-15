@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LogOutButton } from "../../LogOutButton";
 import { screens } from "../../../styles/screens";
 import { useMediaQuery } from "usehooks-ts";
 import { ChatsbarContainer, ChatsbarContent, ChatsbarResizer } from "./styled";
 import { useNavigate } from "react-router-dom";
+import ChatsbarHeader from "./components/ChatsbarHeader";
 
 export default function Chatsbar() {
   const navigate = useNavigate();
@@ -71,12 +71,21 @@ export default function Chatsbar() {
     <ChatsbarContainer
       ref={sidebarRef}
       width={sidebarWidth}
-      onMouseDown={(e) => e.preventDefault()}
+      onMouseDown={(e) => {
+        if (mouseDownWithinResizer) {
+          e.preventDefault();
+        }
+      }}
     >
       <ChatsbarContent>
-        <LogOutButton width="100%" />
+        <ChatsbarHeader />
         <div
-          style={{ height: "5rem", width: "100%", background: "gray" }}
+          style={{
+            height: "5rem",
+            width: "100%",
+            background: "gray",
+            cursor: "pointer",
+          }}
           onClick={() => navigate("/ada")}
         />
       </ChatsbarContent>

@@ -26,4 +26,5 @@ export const ChatsbarResizer = styled.div`
   position: absolute;
   height: 100%;
   left: 100%;
+  z-index: 9999;
 `;

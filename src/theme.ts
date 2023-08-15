@@ -7,7 +7,7 @@ const theme = {
     primaryAlpha70: " rgba(190, 108, 234, 0.7)",
     secondary: "rgba(15, 15, 15)",
     border: "#292929",
-    light: "#999",
+    light: "#707070",
     info: "",
     error: "#f44336",
     success: "",
