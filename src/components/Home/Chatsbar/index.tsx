@@ -4,6 +4,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { ChatsbarContainer, ChatsbarContent, ChatsbarResizer } from "./styled";
 import { useNavigate } from "react-router-dom";
 import ChatsbarHeader from "./components/ChatsbarHeader";
+import { LogOutButton } from "../../common/LogOutButton";
 
 export default function Chatsbar() {
   const navigate = useNavigate();
@@ -79,6 +80,7 @@ export default function Chatsbar() {
     >
       <ChatsbarContent>
         <ChatsbarHeader />
+        <LogOutButton />
         <div
           style={{
             height: "5rem",

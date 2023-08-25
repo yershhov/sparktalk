@@ -1,6 +1,5 @@
-import { Icons } from "../../../pages/SignIn/styled";
+import { Icons } from "../../../styles/common/Icons";
 import {
-  FlexAlignCenter,
   FlexDirectionColumn,
   FlexJustifyCenter,
   FullSizeFlexCenter,

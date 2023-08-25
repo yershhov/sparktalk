@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Input } from "../../../../../styles/form/Input";
-import { FlexCenter } from "../../../../../styles/layouts/flexLayouts";
+import { Input } from "../../../../styles/form/Input";
+import { FlexCenter } from "../../../../styles/layouts/flexLayouts";
 
 const MessageInputStyled = styled(FlexCenter)`
   background: ${(props) => props.theme.colors.secondary};

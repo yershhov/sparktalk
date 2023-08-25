@@ -1,6 +1,6 @@
 import { IoMenuOutline } from "react-icons/io5";
-import { Input } from "../../../../../styles/form/Input";
-import { FlexAlignCenter } from "../../../../../styles/layouts/flexLayouts";
+import { Input } from "../../../../styles/form/Input";
+import { FlexAlignCenter } from "../../../../styles/layouts/flexLayouts";
 import styled from "styled-components";
 
 const ChatsbarHeaderStyled = styled(FlexAlignCenter)`

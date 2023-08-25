@@ -1,9 +1,9 @@
 import { memo } from "react";
-import { Button } from "../styles/form/Button";
-import { StyledButtonProps } from "../types/props";
+import { Button } from "../../styles/form/Button";
+import { StyledButtonProps } from "../../types/props";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/config";
+import { auth } from "../../firebase/config";
 
 function LogOut(props: StyledButtonProps) {
   const { variant, width } = props;

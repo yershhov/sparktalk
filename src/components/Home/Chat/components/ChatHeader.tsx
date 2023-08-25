@@ -1,4 +1,4 @@
-import { FlexCenter } from "../../../../../styles/layouts/flexLayouts";
+import { FlexCenter } from "../../../../styles/layouts/flexLayouts";
 import styled from "styled-components";
 
 const ChatHeaderStyled = styled(FlexCenter)`

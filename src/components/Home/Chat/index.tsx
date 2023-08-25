@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 import { FlexDirectionColumn } from "../../../styles/layouts/flexLayouts";
 import ChatHeader from "./components/ChatHeader";
-import ChatMessageInput from "./components/ChatMessageInput/input";
+import ChatMessageInput from "./components/ChatMessageInput";
 
 const ChatContainer = styled(motion.div)`
   background: ${(props) => props.theme.colors.black};
