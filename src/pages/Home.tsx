@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Flex } from "../styles/layouts/flexLayouts";
-import Chatsbar from "../components/Home/Chatsbar";
-import Chat from "../components/Home/Chat";
+import Chat from "../components/home/chat";
+import Chatsbar from "../components/home/chatsbar";
 
 const HomePageContainer = styled(Flex)`
   display: flex;

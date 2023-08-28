@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Authenticator from "../components/Authenticator";
+import Authenticator from "../components/authenticator";
 
 export default function SparktalkRouter() {
   return (

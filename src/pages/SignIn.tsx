@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
-import SignInHeading from "../components/SignIn/SignInHeading";
-import SignInProviders from "../components/SignIn/SignInProviders";
+import SignInHeading from "../components/signIn/SignInHeading";
+import SignInProviders from "../components/signIn/SignInProviders";
 import FullSizeError from "../components/states/errors/FullSizeError";
 import FullSizeLoading from "../components/states/loading/FullSizeLoading";
-import { SignInContext } from "../context/SignIn";
+import { SignInContext } from "../context/signIn";
 import { auth } from "../firebase/config";
+
 const SignInPageContainer = styled.div`
   position: relative;
   width: 100%;

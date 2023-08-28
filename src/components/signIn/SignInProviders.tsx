@@ -15,7 +15,7 @@ import usersService from "../../api/services/usersService";
 import { auth } from "../../firebase/config";
 import { User } from "../../api/models/user";
 import { useContext } from "react";
-import { SignInContext } from "../../context/SignIn";
+import { SignInContext } from "../../context/signIn";
 
 const SignInProviderButtons = styled(FlexCenter)`
   /* background: ${(props) => props.theme.colors.secondary}; */
